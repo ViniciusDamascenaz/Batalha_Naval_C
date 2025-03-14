@@ -1,6 +1,88 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int HabilidadeOctaedro(int tabuleiro[10][10], int posicao1, int posicao2){
+    char letras[10] = {'A','B','C','D','E','F','G','H','I','J'}; 
+
+    for(int i = 0; i<10; i++){
+        if (letras[i] == posicao1){
+            posicao1 = i;
+        }
+    }
+                                 //Tratando entradas...
+    posicao2 = posicao2 - 1;     //para que fiquem como no jogo real
+
+    if (posicao2 > 9){ // validando posição no tabuleiro
+        printf("Insira uma posição válida");
+        return 0;
+    }
+
+    tabuleiro[posicao2][posicao1] = 5;
+    tabuleiro[posicao2][posicao1+1] = 5;
+    tabuleiro[posicao2+1][posicao1+1] = 5;
+    tabuleiro[posicao2+1][posicao1-1] = 5;
+    tabuleiro[posicao2][posicao1-1] = 5;
+    tabuleiro[posicao2-1][posicao1-1] = 5;
+    tabuleiro[posicao2-1][posicao1+1] = 5;
+    tabuleiro[posicao2+1][posicao1] = 5;
+    tabuleiro[posicao2+2][posicao1] = 5;
+    tabuleiro[posicao2-1][posicao1] = 5;
+    tabuleiro[posicao2-2][posicao1] = 5;
+    
+    
+}
+
+int HabilidadeCruz(int tabuleiro[10][10], int posicao1, int posicao2){
+    char letras[10] = {'A','B','C','D','E','F','G','H','I','J'}; 
+
+    for(int i = 0; i<10; i++){
+        if (letras[i] == posicao1){
+            posicao1 = i;
+        }
+    }
+                                 //Tratando entradas...
+    posicao2 = posicao2 - 1;     //para que fiquem como no jogo real
+
+    if (posicao2 > 9){ // validando posição no tabuleiro
+        printf("Insira uma posição válida");
+        return 0;
+    }
+
+    tabuleiro[posicao2][posicao1] = 5;
+    tabuleiro[posicao2][posicao1+1] = 5;
+    tabuleiro[posicao2][posicao1+2] = 5;
+    tabuleiro[posicao2][posicao1-1] = 5;
+    tabuleiro[posicao2][posicao1-2] = 5;
+    tabuleiro[posicao2+1][posicao1] = 5;
+    tabuleiro[posicao2+2][posicao1] = 5;
+    tabuleiro[posicao2-1][posicao1] = 5;
+    tabuleiro[posicao2-2][posicao1] = 5;
+    
+    
+}
+
+int HabilidadeCone(int tabuleiro[10][10], int posicao1, int posicao2){
+    char letras[10] = {'A','B','C','D','E','F','G','H','I','J'}; 
+
+    for(int i = 0; i<10; i++){
+        if (letras[i] == posicao1){
+            posicao1 = i;
+        }
+    }
+                                 //Tratando entradas...
+    posicao2 = posicao2 - 1;     //para que fiquem como no jogo real
+
+    if (posicao2 > 9){ // validando posição no tabuleiro
+        printf("Insira uma posição válida");
+        return 0;
+    }
+
+    tabuleiro[posicao2][posicao1] = 5;
+    tabuleiro[posicao2+1][posicao1] = 5;
+    tabuleiro[posicao2+1][posicao1+1] = 5;
+    tabuleiro[posicao2+1][posicao1-1] = 5;
+    
+}
 
 int ExibeTabuleiro(char letras[20], int tabuleiro[10][10]){ // Imprime o tabuleiro 
     system('cls'||'clear');
@@ -41,7 +123,12 @@ int GerarNavio(int tabuleiro[10][10], int posicao1, int posicao2){ // Gerando na
 
     char letras[10] = {'A','B','C','D','E','F','G','H','I','J'}; 
 
-    posicao1 = letras[posicao1]; //Tratando entradas...
+    for(int i = 0; i<10; i++){
+        if (letras[i] == posicao1){
+            posicao1 = i;
+        }
+    }
+                                 //Tratando entradas...
     posicao2 = posicao2 - 1;     //para que fiquem como no jogo real
 
     if (posicao2 > 9){ // validando posição no tabuleiro
@@ -62,7 +149,14 @@ int main(){
     int tabuleiro[10][10]; // Setando matriz do tabuleiro
     char letras[10] = {'A','B','C','D','E','F','G','H','I','J'}; // Criando lista de letras
     LimpaMatriz(tabuleiro);
-    GerarNavio(tabuleiro,'A',1);
+    GerarNavio(tabuleiro,'A',1);  
+    GerarNavio(tabuleiro,'A',2);  
+    GerarNavio(tabuleiro,'A',3);  
+    HabilidadeOctaedro(tabuleiro, 'D', 7);
     ExibeTabuleiro(letras, tabuleiro);
     
+    // Montei um script que constroi navios fazendo validações 
+    //fiz com que fosse possivel adicionar os super poderes fornecendo apenas uma coordenada
+    //montei um sistema para converter coordenadas tipo "quero a posição A 1" para coordenadas na matriz
+
 }

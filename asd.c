@@ -4,6 +4,6 @@
 int main(){
     char letras[10] = {'A','B','C','D','E','F','G','H','I','J'};
 
-    printf("%d", letras['A']);  
+    printf("%d", letras['B']);  
 
 }
